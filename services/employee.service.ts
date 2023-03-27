@@ -18,19 +18,13 @@ class EmployeeService {
         if (!employee) {
             throw new Error("Employee not found!")
         }
-        const employeeDto = this.employeeMapper.toDto(employee);
 
-        return employeeDto;
+        return this.employeeMapper.toDto(employee);
 
     }
-    public async deleteEmployeeById(employeeId: number): Promise<Number>{
+    public async deleteEmployeeById(employeeId: number): Promise<Number> {
 
-        const employee = await Employee.destroy({
-            where: {
-                id: employeeId
-            }
-        });
-        return employee;
+        return await Employee.destroy({ where: { id: employeeId } });
     }
 }
 export default EmployeeService;

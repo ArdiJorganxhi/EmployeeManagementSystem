@@ -9,22 +9,22 @@ class EmployeeController {
         let { id } = req.params;
 
         let employee = await this.employeeService.getEmployeeById(parseInt(id));
-        if(employee){
+        if (employee) {
             return res.status(200).send(employee)
         }
-        return res.status(404).send({message: "Employee not found!"})
-        
+        return res.status(404).send({ message: "Employee not found!" })
+
 
     }
 
     public async deleteEmployeeById(req: Request, res: Response): Promise<Response> {
         let { id } = req.params;
         let employee = await this.employeeService.deleteEmployeeById(parseInt(id));
-        if(employee){
-            return res.status(200).send({message: "Employee is deleted!"})
+        if (employee) {
+            return res.status(200).send({ message: "Employee is deleted!" })
         }
 
-        return res.status(500).send({message: "Something wrong happened!"})
+        return res.status(500).send({ message: "Something wrong happened!" })
     }
 }
 

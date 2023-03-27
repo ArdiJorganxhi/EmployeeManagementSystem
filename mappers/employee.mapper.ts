@@ -5,8 +5,7 @@ class EmployeeMapper {
 
     public toDto(employee: Employee): EmployeeDto {
 
-        const employeeDto = new EmployeeDto(employee.id, employee.name, employee.surname);
-        return employeeDto;
+        return new EmployeeDto(employee.id, employee.name, employee.surname);
     }
 }
 export default EmployeeMapper

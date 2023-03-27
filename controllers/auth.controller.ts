@@ -8,7 +8,7 @@ import EmployeeLogin from "../models/requests/employee.login";
 
 
 class AuthController {
-    
+
     private authService = new AuthService();
 
     public async register(req: Request, res: Response): Promise<Response> {
@@ -30,7 +30,7 @@ class AuthController {
 
         const userAuth = await this.authService.login(loginRequest);
 
-        if(userAuth){
+        if (userAuth) {
             return res.status(200).send(userAuth);
         }
 

@@ -1,10 +1,10 @@
 require('dotenv').config()
-import express, {NextFunction, Request, Response} from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 
-class VerifyToken{
+class VerifyToken {
 
-    public verifyUser(req: Request, res: Response, next: NextFunction){
+    public verifyUser(req: Request, res: Response, next: NextFunction) {
 
         let header = req.header('Authorization');
 
@@ -15,13 +15,13 @@ class VerifyToken{
         }
         let token = header.replace("Bearer ", "");
 
-        jwt.verify(token, jwtSecret, function(err, decoded){
-            if(err){
-                return res.status(401).send({message: "Unauthorized!"})
+        jwt.verify(token, jwtSecret, function (err, decoded) {
+            if (err) {
+                return res.status(401).send({ message: "Unauthorized!" })
             }
             next();
         })
-        
+
     }
 }
 
