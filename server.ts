@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import connection from './config/sequelize.config';
 import authrouter from './routes/auth.router'
+import employeerouter from './routes/employee.router'
 
 
 const app = express();
@@ -13,6 +14,7 @@ app.get("/", (req: Request, res: Response): Response => {
 });
 
 app.use('/api/auth', authrouter);
+app.use('/api/employees', employeerouter);
 
 
 const start = async (): Promise<void> => {
