@@ -3,9 +3,9 @@ import { Table, Model, Column, DataType } from "sequelize-typescript";
 
 @Table({
     timestamps: false,
-    tableName: "users"
+    tableName: "employees"
 })
-export class User extends Model {
+export class Employee extends Model {
     @Column({
         type: DataType.STRING,
         allowNull: false,

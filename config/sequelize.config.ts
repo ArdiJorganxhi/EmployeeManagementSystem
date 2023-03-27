@@ -1,6 +1,6 @@
 require('dotenv').config()
 import { Sequelize } from "sequelize-typescript";
-import { User } from "../models/user.model";
+import { Employee } from "../models/employee.model";
 
 const connection = new Sequelize({
   dialect: "postgres",
@@ -9,7 +9,7 @@ const connection = new Sequelize({
   password: process.env.PASSWORD,
   database: process.env.DB_NAME,
   logging: false,
-  models: [User],
+  models: [Employee],
 });
 
 export default connection;
