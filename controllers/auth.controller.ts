@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import bcrypt from 'bcryptjs'
 import AuthService from "../services/auth.service";
-import { Employee } from '../models/employee.model'
+import { Employee } from '../models/entities/employee.model'
 import EmployeeRegister from "../models/requests/employee.register";
 import EmployeeLogin from "../models/requests/employee.login";
 

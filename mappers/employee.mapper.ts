@@ -1,5 +1,5 @@
 import EmployeeDto from "../models/dtos/employee.dto";
-import { Employee } from "../models/employee.model";
+import { Employee } from "../models/entities/employee.model";
 
 class EmployeeMapper {
 

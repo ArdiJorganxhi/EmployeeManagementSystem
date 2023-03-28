@@ -1,6 +1,7 @@
 require('dotenv').config()
 import express, { NextFunction, Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
+import UserUtils from '../utils/user.utils';
 
 class VerifyToken {
 
@@ -19,6 +20,9 @@ class VerifyToken {
             if (err) {
                 return res.status(401).send({ message: "Unauthorized!" })
             }
+            UserUtils.user = decoded;
+            
+            
             next();
         })
 

@@ -1,17 +1,18 @@
 import EmployeeMapper from "../mappers/employee.mapper";
 import EmployeeDto from "../models/dtos/employee.dto";
-import { Employee } from "../models/employee.model";
+import { Employee } from "../models/entities/employee.model";
+import UserUtils from "../utils/user.utils";
 
 
 class EmployeeService {
 
     private employeeMapper = new EmployeeMapper();
 
-    public async getEmployeeById(employeeId: number): Promise<EmployeeDto> {
+    public async getEmployeeById(): Promise<EmployeeDto> {
 
         const employee = await Employee.findOne({
             where: {
-                id: employeeId
+                id: UserUtils.user.dataValues.id
             }
         });
 

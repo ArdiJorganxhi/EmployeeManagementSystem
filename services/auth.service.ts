@@ -1,9 +1,11 @@
 require('dotenv').config();
-import { Employee } from "../models/employee.model";
+import { Employee } from "../models/entities/employee.model";
 import bcrypt from 'bcryptjs'
 import EmployeeRegister from "../models/requests/employee.register";
 import jwt from 'jsonwebtoken'
 import EmployeeLogin from "../models/requests/employee.login";
+import UserUtils from "../utils/user.utils";
+import { raw } from "express";
 
 class AuthService {
 
@@ -31,7 +33,8 @@ class AuthService {
 
         let { email, password } = loginRequest;
 
-        const checkUser = await Employee.findOne({ where: { email } });
+        const checkUser = await Employee.findOne(
+            { where: { email }, raw: true });
 
         if (!checkUser) {
             throw new Error("User doesn't exist!")
@@ -43,6 +46,8 @@ class AuthService {
             throw new Error("Passwords do not match!")
         }
         const jwtSecret = process.env.JWT_SECRET || "";
+        
+        UserUtils.user = checkUser.id;
 
         return jwt.sign({ ...checkUser }, jwtSecret, { expiresIn: 60 * 60 });
     }

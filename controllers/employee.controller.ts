@@ -6,9 +6,8 @@ class EmployeeController {
 
     private employeeService = new EmployeeService();
     public async getEmployeeById(req: Request, res: Response): Promise<Response> {
-        let { id } = req.params;
 
-        let employee = await this.employeeService.getEmployeeById(parseInt(id));
+        let employee = await this.employeeService.getEmployeeById();
         if (employee) {
             return res.status(200).send(employee)
         }
