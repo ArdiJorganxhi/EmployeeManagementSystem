@@ -10,5 +10,7 @@ const verifyToken = new VerifyToken();
 
 router.get('/', verifyToken.verifyUser, employeeController.getEmployeeById.bind(employeeController));
 router.delete('/:id', verifyToken.verifyUser, employeeController.deleteEmployeeById.bind(employeeController));
+router.post('/:employeeId/jobs/:jobsId', verifyToken.verifyUser, employeeController.employ.bind(employeeController));
+router.put('/:employeeId/jobs/:jobsId', verifyToken.verifyUser, employeeController.unemploy.bind(employeeController));
 
 export default router

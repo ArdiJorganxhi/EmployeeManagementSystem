@@ -1,10 +1,11 @@
-import { Table, Model, Column, DataType } from 'sequelize-typescript'
+import { Table, Model, Column, DataType, BelongsToMany } from 'sequelize-typescript'
+import { EmployeeJob } from './employee.job.model';
+import { Employee } from './employee.model';
 
 @Table({
     timestamps: false,
     tableName: "jobs"
 })
-
 export class Job extends Model {
 
     @Column({
@@ -24,5 +25,13 @@ export class Job extends Model {
         allowNull: false
     })
     salary_range!: number
+
+
+    @BelongsToMany(() => Employee, {
+        through: () => EmployeeJob,
+        foreignKey: 'jobId',
+        otherKey: 'employeeId'
+      })
+    employee!: Employee[]
 
 }
