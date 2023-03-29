@@ -25,7 +25,7 @@ export class EmployeeJob extends Model {
 
     @Column({
         type: DataType.INTEGER,
-        allowNull: false
+        allowNull: true
     })
     salary!: number
 
@@ -33,12 +33,14 @@ export class EmployeeJob extends Model {
         type: DataType.DATEONLY,
         allowNull: false
     })
-    dateEntered!: number
+    dateEntered!: Date
 
     @Column({
         type: DataType.DATEONLY,
         allowNull: true
     })
-    dateLeft!: number
+    dateLeft!: Date
+
+
 
 }

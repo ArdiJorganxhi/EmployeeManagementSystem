@@ -30,7 +30,6 @@ export class Job extends Model {
     @BelongsToMany(() => Employee, {
         through: () => EmployeeJob,
         foreignKey: 'jobId',
-        otherKey: 'employeeId'
       })
     employee!: Employee[]
 

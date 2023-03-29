@@ -17,7 +17,7 @@ class EmployeeController {
         }
 
         return res.status(200).send(employee)
- 
+
 
 
     }
@@ -27,35 +27,35 @@ class EmployeeController {
         let employee = await this.employeeService.deleteEmployeeById(parseInt(id));
         if (!employee) {
             return res.status(500).send({ message: "Something wrong happened!" })
-           
+
         }
         return res.status(200).send({ message: "Employee is deleted!" })
 
-     
+
     }
 
     public async employ(req: Request, res: Response): Promise<Response> {
-        let {employeeId, jobId} = req.params;
-        let request: EmployRequest = req.body
+        let { employeeId, jobId } = req.params;
+        let request: EmployRequest = req.body;
         let employment = await this.employeeJobService.employ(parseInt(employeeId), parseInt(jobId), request);
 
-        if(!employment){
-            return res.status(500).send({message: "Something went wrong!"})
+        if (!employment) {
+            return res.status(500).send({ message: "Something went wrong!" })
         }
 
-        return res.status(200).send({message: "Employment is successful!"})
+        return res.status(200).send({ message: "Employment is successful!" })
     }
 
     public async unemploy(req: Request, res: Response): Promise<Response> {
-        let {employeeId, jobId} = req.params;
+        let { employeeId, jobId } = req.params;
 
         let unemployment = await this.employeeJobService.unemploy(parseInt(employeeId), parseInt(jobId));
 
-        if(!unemployment){
-            return res.status(500).send({message: "Something went wrong!"})
+        if (!unemployment) {
+            return res.status(500).send({ message: "Something went wrong!" })
         }
 
-        return res.status(200).send({message: "Unemployment is successful!"})
+        return res.status(200).send({ message: "Unemployment is successful!" })
 
     }
 }

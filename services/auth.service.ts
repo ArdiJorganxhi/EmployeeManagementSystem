@@ -34,7 +34,7 @@ class AuthService {
         let { email, password } = loginRequest;
 
         const checkUser = await Employee.findOne(
-            { where: { email }, raw: true });
+            { where: { email }, });
 
         if (!checkUser) {
             throw new Error("User doesn't exist!")

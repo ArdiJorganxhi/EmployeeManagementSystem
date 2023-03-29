@@ -6,18 +6,7 @@ class EmployeeJobService {
     public async employ(employeeId: number, jobId: number, request: EmployRequest): Promise<EmployeeJob> {
 
         let { salary, dateEntered } = request;
-
-        const checkEmployment = await EmployeeJob.findOne({
-            where: {
-                employeeId: employeeId,
-                jobId: jobId
-            }
-        });
-
-        if (checkEmployment) {
-            throw new Error("This employee already is employeed!")
-        }
-
+        
         const employed = await new EmployeeJob({ employeeId, jobId, salary, dateEntered })
 
         await employed.save();
@@ -44,12 +33,7 @@ class EmployeeJobService {
 
         return await checkEmployment.update({
             dateLeft: leftDate
-        }, {
-            where: {
-                employeeId: employeeId,
-                jobId: jobId
-            }
-        })
+        },)
     }
 }
 
